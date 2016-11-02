@@ -600,6 +600,725 @@ em{ font-style: normal; }
 }
 
 
+/*boxTwo*/
+.boxTwo{
+	width: 100%;
+	min-height: 1300px;
+	border-top: 1px solid #15537A;
+	overflow: hidden;
+	background: #053362;
+	padding-bottom: 60px;
+}
+.boxTwo_con{
+	position: relative;
+}
+.cloudBox{
+	position: absolute;
+	width: 100%;
+	height: auto;
+}
+.cloudBox>div{
+	position: absolute;
+}
+.cloudBox i{
+	position: absolute;
+	background: url(../images/cloud.png) no-repeat;
+	background-size: contain;
+}
+.cloudBox0{
+	top: 102px;
+	left: 50%;
+	margin-left: -49px;
+}
+.cloudBox0 i:nth-of-type(1) {
+    width: 121px;
+    height: 68px;
+    top: 52px;
+    left: -40px;
+    opacity: .3;
+}
+.cloudBox0 i:nth-of-type(2) {
+    width: 104px;
+    height: 58px;
+    top: 52px;
+    left: 31px;
+}
+.cloudBox1 {
+    top: 249px;
+    left: -53px;
+}
+.cloudBox1 i:nth-of-type(1) {
+    width: 121px;
+    height: 68px;
+    opacity: .3;
+}
+.cloudBox1 i:nth-of-type(2) {
+    width: 148px;
+    height: 83px;
+    top: 0;
+    left: 68px;
+}
+.cloudBox2 {
+    top: 219px;
+    left: 683px;
+}
+.cloudBox2 i {
+    width: 121px;
+    height: 68px;
+    opacity: .7;
+}
+.cloudBox3 {
+    top: 531px;
+    left: 206px;
+}
+.cloudBox3 i {
+    width: 187px;
+    height: 105px;
+}
+.cloudBox4 {
+    top: 757px;
+    left: 500px;
+}
+.cloudBox4 i:nth-of-type(1) {
+    width: 121px;
+    height: 68px;
+}
+.cloudBox4 i:nth-of-type(2) {
+    width: 121px;
+    height: 68px;
+    opacity: .3;
+    top: 34px;
+    left: 61px;
+}
+.cloudBox5 {
+    top: 1162px;
+    left: 206px;
+}
+.cloudBox5 i:nth-of-type(1) {
+    width: 121px;
+    height: 68px;
+    opacity: .3;
+}
+.cloudBox5 i:nth-of-type(2) {
+    width: 187px;
+    height: 105px;
+    top: -10px;
+    left: 42px;
+}
+.cloudBox6 {
+    top: 1114px;
+    left: 535px;
+}
+.cloudBox6 i {
+    width: 255px;
+    height: 143px;
+    opacity: .3;
+}
+.ship{
+	position: relative;
+	z-index: 1;
+	float: right;
+	padding-top: 109px;
+    margin-top: 56px;
+}
+.ship em{
+    position: absolute;
+    top: 0;
+    right: 2px;
+    width: 166px;
+    height: 169px;
+    background: url(../images/ship.png);
+}
+.ship a{
+    display: inline-block;
+    width: 150px;
+    height: 40px;
+    background: #fd5a71;
+    border-radius: 20px;
+    font: 20px/40px "Microsoft YaHei","微软雅黑";
+    color: #fff;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
+}
+.ship a:hover{
+	-webkit-transform: scale(0.9,0.9);
+	transform: scale(0.9,0.9);
+}
+.shipStar{
+	float: right;
+	margin-top: 56px;
+    margin-right: -138px;
+}
+.pieceOne{
+	position: relative;
+	padding-top: 145px;
+}
+#umbrella { 
+	width: 145px; 
+	height: 190px; 
+	position: absolute; 
+	top: 0px; 
+	left: 630px; 
+	z-index: 2; 
+	-webkit-transform: rotate(15deg);
+	transform: rotate(15deg);
+}
+.umbrella { 
+	display: inline-block; 
+	width: 145px; 
+	height: 190px; 
+	background: url(../images/umbrella.png) no-repeat; 
+}
+#umbrella span { 
+	background-size: cover; 
+	position: absolute; 
+	bottom: 0; 
+	left: 50%; 
+	margin-left: -15px; 
+}
+#umbrella .man { 
+	width: 29px; 
+	height: 73px; 
+	background-image: url(../images/man.png); 
+}
+#umbrella .woman { 
+	width: 31px; 
+	height: 70px; 
+	background-image: url(../images/woman.png); 
+}
+#umbrella .oldman { 
+	width: 33px; 
+	height: 78px; 
+	background-image: url(../images/oldMan.png); 
+}
+#umbrella .boy { 
+	width: 31px; 
+	height: 69px; 
+	background-image: url(../images/boy.png); 
+}
+#umbrella .girl { 
+	width: 30px; 
+	height: 69px; 
+	background-image: url(../images/girl.png);  
+}
+.wheelBox{
+	width: 396px;
+	margin-left: 34px;
+	position: relative;
+	z-index: 1;
+}
+.wheel{
+	width: 396px;
+	height: 380px;
+	position: relative;
+	overflow: hidden;
+}
+#wheel{
+	width: 396px;
+    height: 396px;
+    background: url(../images/wheel.png) no-repeat center;
+    position: absolute;
+    -webkit-animation: turn 60s linear infinite;
+    animation: turn 60s linear infinite; 
+}
+#wheel:hover { 
+	-webkit-animation-play-state: paused; 
+	animation-play-state: paused; 
+}
+@-webkit-keyframes turn{
+	from{ -webkit-transform: rotate(0); }
+	to{ -webkit-transform: rotate(360deg); }
+}
+@keyframes turn{
+	from{ transform: rotate(0); }
+	to{ transform: rotate(360deg); }
+}
+#wheel span{
+	position: absolute;
+	width: 38px;
+	height: 42px;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: bottom center;
+}
+#wheel span:nth-of-type(1) {top: 0;left: 181px;}
+#wheel span:nth-of-type(2) { top: 6px; left: 225px; -webkit-transform: rotate(15deg); transform: rotate(15deg);}
+#wheel span:nth-of-type(3) { top: 24px; left: 270px; -webkit-transform: rotate(30deg); transform: rotate(30deg); }
+#wheel span:nth-of-type(4) { top: 52px; left: 306px; -webkit-transform: rotate(45deg); transform: rotate(45deg); }
+#wheel span:nth-of-type(5) { top: 90px; left: 334px; -webkit-transform: rotate(59deg); transform: rotate(59deg); }
+#wheel span:nth-of-type(6) { top: 133px; left: 352px; -webkit-transform: rotate(76deg); transform: rotate(76deg); }
+#wheel span:nth-of-type(7) { top: 176px; right: 0; -webkit-transform: rotate(90deg); transform: rotate(90deg); }
+#wheel span:nth-of-type(8) { top: 221px; left: 352px; -webkit-transform: rotate(104deg); transform: rotate(104deg); }
+#wheel span:nth-of-type(9) { top: 265px; left: 334px; -webkit-transform: rotate(121deg); transform: rotate(121deg); }
+#wheel span:nth-of-type(10) { top: 300px; left: 306px; -webkit-transform: rotate(135deg); transform: rotate(135deg); }
+#wheel span:nth-of-type(11) { top: 331px; left: 268px; -webkit-transform: rotate(150deg); transform: rotate(150deg); }
+#wheel span:nth-of-type(12) { top: 348px; left: 225px; -webkit-transform: rotate(165deg); transform: rotate(165deg); }
+#wheel span:nth-of-type(13) { bottom: 0 ; left: 180px; -webkit-transform: rotate(180deg); transform: rotate(180deg); }
+#wheel span:nth-of-type(14) { top: 348px; left: 134px; -webkit-transform: rotate(194deg); transform: rotate(194deg); }
+#wheel span:nth-of-type(15) { top: 330px; left: 90px; -webkit-transform: rotate(212deg); transform: rotate(212deg); }
+#wheel span:nth-of-type(16) { top: 301px; left: 53px; -webkit-transform: rotate(227deg); transform: rotate(227deg); }
+#wheel span:nth-of-type(17) { top: 266px; left: 25px; -webkit-transform: rotate(239deg); transform: rotate(239deg); }
+#wheel span:nth-of-type(18) { top: 221px; left: 7px; -webkit-transform: rotate(256deg); transform: rotate(256deg); }
+#wheel span:nth-of-type(19) { top: 177px; left: 2px; -webkit-transform: rotate(270deg); transform: rotate(270deg); }
+#wheel span:nth-of-type(20) { top: 134px; left: 6px; -webkit-transform: rotate(285deg); transform: rotate(285deg); }
+#wheel span:nth-of-type(21) { top: 92px; left: 24px; -webkit-transform: rotate(298deg); transform: rotate(298deg); }
+#wheel span:nth-of-type(22) { top: 52px; left: 53px; -webkit-transform: rotate(314deg); transform: rotate(314deg); }
+#wheel span:nth-of-type(23) { top: 24px; left: 88px; -webkit-transform: rotate(330deg); transform: rotate(330deg); }
+#wheel span:nth-of-type(24) { top: 6px; left: 133px; -webkit-transform: rotate(344deg); transform: rotate(344deg); }
+#wheel .man { 
+	background-image: url(../images/manHead.png); 
+}
+#wheel .woman {
+	background-image: url(../images/womanHead.png);
+}
+#wheel .oldman { 
+	background-image: url(../images/oldHead.png); 
+}
+#wheel .boy { 
+	background-image: url(../images/boyHead.png); 
+}
+#wheel .girl { 
+	background-image: url(../images/girlHead.png); 
+}
+.wheel img{
+    position: absolute;
+    top: 182px;
+    left: 50%;
+    margin-left: -126px;
+}
+.pieceOne .roadBox{
+    position: relative;
+    margin-top: -149px;
+}
+.pieceOne span{
+	position: absolute;
+	background-size: cover;
+	bottom: 111px;
+}
+.road span:nth-of-type(1) {
+    right: 220px;
+}
+.road span:nth-of-type(2) {
+    right: 53px;
+}
+.pieceOne .man{
+	width: 29px;
+    height: 73px;
+    background-image: url(../images/man.png);
+}
+.pieceOne .oldman {
+    width: 33px;
+    height: 78px;
+    background-image: url(../images/oldMan.png);
+}
+.pieceOne .boy {
+    width: 31px;
+    height: 69px;
+    background-image: url(../images/boy.png);
+}
+.pieceOne .girl {
+    width: 30px; 
+    height: 69px; 
+    background-image: url(../images/girl.png);
+}
+.pieceOne .woman { 
+	width: 31px; 
+	height: 70px; 
+	background-image: url(../images/woman.png); 
+}
+
+.pieceTwo{
+	overflow: hidden;
+	position: relative;
+	padding-top: 200px;
+}
+.leftShade, .rightShade{
+	position: absolute;
+	width: 50px;
+	height: 156px;
+	z-index: 2;
+	bottom: 121px;
+}
+.leftShade{
+	left: -1px;
+	background: -moz-linear-gradient(left, rgba(5,51,98,1), rgba(5,51,98,0));
+	background: -webkit-linear-gradient(left, rgba(5,51,98,1), rgba(5,51,98,0));
+}
+.rightShade{
+	right: -1px;
+	background: -moz-linear-gradient(left, rgba(5,51,98,0), rgba(5,51,98,1));
+	background: -webkit-linear-gradient(left, rgba(5,51,98,0), rgba(5,51,98,1));
+}
+#train{
+	width: 2028px;
+	height: 118px;
+	right: 0;
+	position: absolute;
+	-webkit-animation: run 10s linear infinite;
+	animation: run 10s linear infinite;
+}
+@-webkit-keyframes run {
+	from{ right: 0; }
+	to{ right: -1014px; }
+}
+@keyframes run {
+	from{ right: 0; }
+	to{ right: -1014px; }
+}
+#train:hover { 
+	animation-play-state: paused; 
+	animation-play-state: paused; 
+}
+.train_box1, .train_box2 { 
+	float: left; 
+	width: 1014px; 
+}
+.train_box1>div, .train_box2>div  { 
+	float: left; 
+	position: relative; 
+}
+.train{
+	width: 169px;
+	height: 118px;
+}
+.train1 .train, .train4 .train { 
+	background: url(../images/train1.png); 
+}
+.train2 .train, .train5 .train { 
+	background: url(../images/train2.png); 
+}
+.train3 .train, .train6 .train { 
+	background: url(../images/train3.png); 
+}
+#train span { 
+	position: absolute; 
+	width: 32px; 
+	height: 38px; 
+	background-repeat: no-repeat; 
+	background-position: bottom center;  
+	background-size: contain; 
+}
+#train .man { 
+	background-image: url(../images/manHead.png); 
+}
+#train .woman { 
+	background-image: url(../images/womanHead.png); 
+}
+#train .oldman { 
+	background-image: url(../images/oldHead.png); 
+}
+#train .boy { 
+	background-image: url(../images/boyHead.png); 
+}
+#train .girl { 
+	background-image: url(../images/girlHead.png); 
+}
+#train .head{
+	position: absolute;
+	bottom: 133px;
+}
+.train1 span:nth-of-type(1), .train4 span:nth-of-type(1) {
+	top: -13px;
+	left: 62px;
+}
+.train1 span:nth-of-type(2), .train4 span:nth-of-type(2) {
+	top: -23px;
+	left: 97px;
+}
+.train1 span:nth-of-type(3), .train2 .head span:nth-of-type(2), .train3 .head span:nth-of-type(3), .train4 span:nth-of-type(3), .train5 span:nth-of-type(2), .train6 .head span:nth-of-type(3) {
+	top: 61px;
+	left: 19px;
+}
+.train1 span:nth-of-type(4), .train2 .head span:nth-of-type(3), .train3 .head span:nth-of-type(4), .train4 span:nth-of-type(4), .train5 span:nth-of-type(3), .train6 .head span:nth-of-type(4) {
+	top: 61px;
+	left: 57px;
+}
+.train2 .head span:nth-of-type(4), .train3 .head span:nth-of-type(5), .train4 span:nth-of-type(5), .train6 .head span:nth-of-type(5)  {
+	top: 61px;
+	left: 96px;
+}
+.train1 span:nth-of-type(5), .train5 span:nth-of-type(4){
+	top: 61px;
+	left: 98px;
+}
+.train2 .head span:nth-of-type(1), .train5 .head span:nth-of-type(1){
+	top: 0px;
+	left: 93px;
+}
+.train3 .head span:nth-of-type(1), .train6 .head span:nth-of-type(1){
+	top: -23px;
+	left: 80px;
+}
+.train3 span:nth-of-type(2), .train6 span:nth-of-type(2) {
+	top: -23px;
+	left: 114px;
+}
+.pieceTwo .road {
+	padding-top: 118px;
+}
+
+.pieceThree{
+	position: relative;
+	padding-top: 20px;
+}
+.pieceThree .peoples {
+	position: absolute;
+	top: 345px;
+}
+.pieceThree .peoples span { 
+	position: absolute; 
+	bottom: 0; 
+	background-size: contain; 
+}
+.pieceThree .peoples span:nth-of-type(1) {
+	bottom: 68px;
+	left: 253px;
+}
+.pieceThree .peoples span:nth-of-type(2) { 
+	left: 333px; 
+}
+.pieceThree .peoples span:nth-of-type(3) { 
+	left: 365px; 
+}
+.pieceThree .peoples span:nth-of-type(4) { 
+	left: 567px; 
+}
+.pieceThree .peoples span:nth-of-type(5) { 
+	left: 603px; 
+}
+.pieceThree .peoples .oldman { 
+	width: 33px; 
+	height: 78px; 
+	background-image: url(../images/oldMan.png); 
+}
+.pieceThree .peoples .man { 
+	width: 29px; 
+	height: 73px; 
+	background-image: url(../images/man.png); 
+}
+.pieceThree .peoples .woman { 
+	width: 31px; 
+	height: 70px; 
+	background-image: url(../images/woman.png); 
+}
+.pieceThree .peoples .boy { 
+	width: 31px; 
+	height: 69px; 
+	background-image: url(../images/boy.png); 
+}
+.pieceThree .peoples .girl { 
+	width: 26px; 
+	height: 60px; 
+	background-image: url(../images/girl.png); 
+}
+.carBox {
+	position: absolute;
+	top: 245px;
+	-webkit-animation: carRun 10s linear infinite;
+	animation: carRun 10s linear infinite;
+}
+@-webkit-keyframes carRun {
+	from { left: 30px; }
+	to { left: 200px; }
+	0%, 85%{opacity: 1; }
+	100%{opacity: 0; }
+}
+@keyframes carRun {
+	from { left: 0; opacity: 1; }
+	to { left: 200px; opacity: 0; }
+	0%, 85%{opacity: 1; }
+	100%{opacity: 0; }
+}
+.carBox span { 
+	position: absolute; 
+	background-repeat: no-repeat; 
+	background-position: center bottom; 
+	background-size: contain; 
+	bottom: 29px; 
+}
+.carBox span:nth-of-type(1) {
+	width: 29px;
+	height: 22px;
+	left: 18px;
+}
+.carBox span:nth-of-type(2) { 
+	width: 26px; 
+	height: 23px; 
+	left: 46px; 
+}
+.carBox .man { 
+	background-image: url(../images/manHead.png); 
+}
+.carBox .woman { 
+	background-image: url(../images/womanHead.png); 
+}
+.carBox .oldman { 
+	background-image: url(../images/oldHead.png); 
+}
+.carBox .boy { 
+	background-image: url(../images/boyHead.png); 
+}
+.carBox .girl { 
+	background-image: url(../images/girlHead.png); 
+}
+/*旋转木马*/
+.revolve, .revolve2 {
+	width: 274px;
+	height: 114px;
+	position: absolute;
+	top: 203px;
+	overflow: hidden;
+	right: 58px;
+}
+.revolveBox em, .revolveBox span{
+	position: absolute;
+	background-size: contain;
+	background-repeat:no-repeat ;
+}
+.horse { 
+	display: block; 
+	width: 60px; 
+	height: 46px; 
+	background: url(../images/horse.png); 
+}
+.revolveBox{
+	position: absolute;
+	left: 0px;
+	-webkit-animation: hourseRun 20s linear infinite;
+	animation: hourseRun 20s linear infinite; 
+}
+@-webkit-keyframes hourseRun {
+	from { left: 0; }
+	to { left: -300px; }
+}
+@keyframes hourseRun {
+	from { left: 0; }
+	to { left: -300px; }
+}
+.revolveBox div{
+	position: absolute;
+}
+.revolve .girl, .revolve2 .girl { 
+	width: 22px; 
+	height: 50px; 
+	background-image: url(../images/girl.png); 
+	top: -18px; 
+	left: 18px; 
+}
+.revolve .man, .revolve2 .man { 
+	width: 23px; 
+	height: 59px; 
+	background-image: url(../images/man.png); 
+	top: -24px; 
+	left: 19px; 
+}
+.revolve .woman, .revolve2 .woman { 
+	width: 27px; 
+	height: 60px; 
+	background-image: url(../images/woman.png); 
+	top: -25px; 
+	left: 17px; 
+}
+.revolve .oldman, .revolve2 .oldman { 
+	width: 26px; 
+	height: 61px; 
+	background-image: url(../images/oldMan.png); 
+	top: -24px; 
+	left: 17px; 
+}
+.revolve .boy, .revolve2 .boy { 
+	width: 25px; 
+	height: 58px; 
+	background-image: url(../images/boy.png); 
+	top: -22px; 
+	left: 18px; 
+}
+.revolveBox i {
+	display: block;
+	width: 3px;
+	height: 170px;
+	background: #fff;
+	margin-left: 28px;
+	margin-top: -135px;
+}
+.horseBox0 { left: 0px; }
+.horseBox1 { left: 50px; }
+.horseBox2 { left: 100px; }
+.horseBox3 {left: 150px;}
+.horseBox4 { left: 200px; }
+.horseBox5 { left: 250px; }
+.horseBox6 { left: 300px; }
+.horseBox7 { left: 350px; }
+.horseBox8 { left: 400px; }
+.horseBox9 { left: 450px; }
+.horseBox10 { left: 500px; }
+.horseBox11 { left: 550px; }
+.horseBox12 { left: 600px; }
+.revolve2 { 
+	-webkit-transform: rotateY(180deg); 
+	transform: rotateY(180deg); 
+	opacity: .2; 
+} 
+.revolve2 .revolveBox { 
+	-webkit-transform: scale(0.85,0.85); 
+	transform: scale(0.85,0.85);
+}
+.revolve2 .horseBox0 { left: 0px; }
+.revolve2 .horseBox1 { left: 50px; }
+.revolve2 .horseBox2 { left: 100px; }
+.revolve2 .horseBox3 { left: 150px; }
+.revolve2 .horseBox4 { left: 200px; }
+.revolve2 .horseBox5 { left: 250px; }
+.revolve2 .horseBox6 { left: 300px; }
+.revolve2 .horseBox7 { left: 350px; }
+.revolve2 .horseBox8 { left: 400px; }
+.revolve2 .horseBox9 { left: 450px; }
+.revolve2 .horseBox10 { left: 500px; }
+.revolve2 .horseBox11 { left: 550px; }
+.revolve2 .horseBox12 { left: 600px; }
+.horseBox1, .horseBox3, .horseBox5, .horseBox7, .horseBox9, .horseBox11 {
+	-webkit-animation: move1 4s infinite;
+	animation: move1 4s infinite; 
+}
+@-webkit-keyframes move1{
+	0%,100%{ top: 26px; }
+	50% { top: 68px; }
+}
+
+.horseBox0, .horseBox2, .horseBox4, .horseBox6, .horseBox8, .horseBox10, .horseBox12 {
+	-webkit-animation: move2 4s infinite;
+	animation: move2 4s infinite; 
+}
+@-webkit-keyframes move2{
+	0%,100%{ top: 68px; }
+	50% { top: 26px; }
+}
+@keyframes move2{
+	0%,100%{ top: 68px; }
+	50% { top: 26px; }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
