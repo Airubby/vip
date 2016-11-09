@@ -49,6 +49,22 @@ em{ font-style: normal; }
 }
 #search .search_box{
 	display: none;
+	font: 14px/24px "Microsoft YaHei","微软雅黑";
+	width: 202px;
+	padding: 10px;
+	margin-top: 5px;
+	border: 2px solid #55b9f8;
+	border-radius: 12px;
+	background-color: rgba(0,0,0,.9);
+	color: #fff;
+	position: absolute;
+}
+#search .search_box p{
+	text-indent: 10px;
+	cursor: pointer;
+}
+#search .search_box p:hover{
+	background: #09c;
 }
 .content{
 	width: 1000px;

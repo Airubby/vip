@@ -18,7 +18,12 @@ var onePieceSpan=document.getElementById('pieceOne').getElementsByTagName('span'
 var twoPieceSpan = document.getElementById('pieceTwo').getElementsByTagName('span');
 var threePieceSpan = document.getElementById('pieceThree').getElementsByTagName('span');
 var spanNum = onePieceSpan.length+twoPieceSpan.length/2+threePieceSpan.length;
-
+//搜索事件
+var search=document.getElementById('search');
+var input=search.getElementsByTagName('input');
+var searchBox=document.getElementById("searchBox");
+var umbrella=document.getElementById("umbrella");
+var searchNum=null;
 
 
 //提示和点击加入vip的效果
@@ -115,8 +120,62 @@ for(var i=0;i<threePieceSpan.length;i++){
 	}
 }
 
-
-
+//搜索事件
+input[0].onfocus=function(){
+	var _this=this;
+	if(this.value!==''){
+		searchBox.style.display="block";
+	}
+	document.onkeyup=function(e){
+		var e=e||window.event;
+		var num=0;
+		searchBox.info=true;
+		if(_this.value==''){
+			searchBox.style.display="none";
+			searchBox.innerHTML='';
+		}else{
+			searchBox.innerHTML='';
+			for(var s in data){
+				var reg=new RegExp(input[0].value);
+				if(reg.test(data[s].name)&&num<8){
+					searchBox.style.display="block";
+					var p=document.createElement('p');
+					p.innerHTML=data[s].name;
+					searchBox.appendChild(p);
+					num++;
+					p.index=s;
+					p.onclick=function(){
+						input[0].value=data[this.index].name;
+						searchBox.style.display="none";
+					}
+					searchBox.info=false;
+				}
+				
+			}
+			if(searchBox.info){
+				var div=document.createElement('div');
+				div.style.color="red";
+				div.innerHTML='很抱歉未找到您的用户名';
+				searchBox.appendChild(div);
+			}
+			
+		}
+		
+	}
+}
+input[1].onclick=function(){
+	searchBox.style.display="none";
+	for(var s in data){
+		if(data[s].name===input[0].value){
+			searchNum=s;
+			findPeople();
+		}
+	}
+	input[0].value='';
+}
+function findPeople(){
+	console.log(1)
+}
 
 
 
