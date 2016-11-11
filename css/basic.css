@@ -937,8 +937,9 @@ em{ font-style: normal; }
     background-image: url(../images/boy.png);
 }
 .pieceOne .girl {
-    width: 30px; 
-    height: 69px; 
+    width: 30px;
+    height: 69px;
+    /* position: relative; */
     background-image: url(../images/girl.png);
 }
 .pieceOne .woman { 
@@ -1653,8 +1654,44 @@ em{ font-style: normal; }
     -webkit-transform: scale(0.9,0.9);
     transform: scale(0.9,0.9);
 }
-
-
+#randomInfo{
+	visibility: hidden;
+	width: 158px;
+    height: 60px;
+    border-radius: 30px;
+    background-color: #f3b166;
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    margin-left: -79px;
+    z-index: 2;
+}
+#randomInfo p{
+	color: #fff;
+}
+#randomInfo p:nth-of-type(1) {
+    font: 18px/1 "黑体";
+    padding: 10px 0 8px 0;
+    text-align: center;
+}
+#randomInfo p:nth-of-type(2) {
+    font: 12px/1 "Arial";
+    background: url(../images/clock.png) no-repeat 35px center;
+    text-align: center;
+}
+#randomInfo .sj {
+	position: absolute;
+	bottom: -6px;
+	left: 50%;
+	margin-left: -6px;
+	width: 0;
+	height: 0;
+	font-size: 0px;
+	line-height: 0px;
+	border-top: 6px solid #f3b166;
+	border-left: 6px solid transparent;
+	border-right: 6px solid transparent;
+}
 
 
 

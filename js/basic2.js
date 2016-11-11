@@ -98,7 +98,9 @@ for(var i=0;i<onePieceSpan.length;i++){
 		onePieceSpan[i].className=womanName[womanNum%womanName.length];
 		womanNum++;
 	}
-	
+	onePieceSpan[i].name = data[arr[i]].name;
+	onePieceSpan[i].time = data[arr[i]].time;
+	onePieceSpan[i].sex = data[arr[i]].sex;
 }
 for(var i=0;i<twoPieceSpan.length/2;i++){
 	if(data[arr[i+onePieceSpan.length]].sex=="man"){
@@ -108,7 +110,9 @@ for(var i=0;i<twoPieceSpan.length/2;i++){
 		twoPieceSpan[i].className=twoPieceSpan[i+twoPieceSpan.length/2].className=womanName[womanNum%womanName.length];
 		womanNum++;
 	}
-	
+	twoPieceSpan[i].name=twoPieceSpan[i+twoPieceSpan.length/2].name = data[arr[i+onePieceSpan.length]].name;
+	twoPieceSpan[i].time=twoPieceSpan[i+twoPieceSpan.length/2].time = data[arr[i+onePieceSpan.length]].time;
+	twoPieceSpan[i].sex=twoPieceSpan[i+twoPieceSpan.length/2].sex = data[arr[i+onePieceSpan.length]].sex;
 }
 for(var i=0;i<threePieceSpan.length;i++){
 	if(data[arr[i+onePieceSpan.length+twoPieceSpan.length/2]].sex=="man"){
@@ -118,8 +122,35 @@ for(var i=0;i<threePieceSpan.length;i++){
 		threePieceSpan[i].className=womanName[womanNum%womanName.length];
 		womanNum++;
 	}
+	threePieceSpan[i].name=data[arr[i+onePieceSpan.length+twoPieceSpan.length/2]].name;
+	threePieceSpan[i].time=data[arr[i+onePieceSpan.length+twoPieceSpan.length/2]].time;
+	threePieceSpan[i].sex=data[arr[i+onePieceSpan.length+twoPieceSpan.length/2]].sex;
 }
-
+//鼠标移入移除显示不显示
+var boxTwo=document.getElementById('boxTwo');
+var span=boxTwo.getElementsByTagName('span');
+var randomInfo=document.getElementById('randomInfo');
+var randomInfoChild=randomInfo.children;
+for(var i=0;i<span.length;i++){
+	console.log(span[i]);
+	span[i].index=i;
+	span[i].addEventListener('mousemove',show,false);
+	span[i].addEventListener('mouseout',hidden,false);
+}
+function show(e){
+	var e=e||window.event;
+	var s=document.documentElement.scrollTop||document.body.scrollTop;
+	var left=e.clientX;
+	var top=e.clientY+s-randomInfo.offsetHeight-20;
+	randomInfo.style.visibility="visible";
+	randomInfo.style.left=left+"px";
+	randomInfo.style.top=top+"px";
+	randomInfoChild[0].innerHTML=this.name;
+	randomInfoChild[1].innerHTML=this.time;
+}
+function hidden(){
+	randomInfo.style.visibility="hidden";
+}
 //搜索事件
 input[0].onfocus=function(){
 	var _this=this;
