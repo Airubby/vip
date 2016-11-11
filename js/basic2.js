@@ -17,7 +17,7 @@ var womanNum=0;
 var onePieceSpan=document.getElementById('pieceOne').getElementsByTagName('span');
 var twoPieceSpan = document.getElementById('pieceTwo').getElementsByTagName('span');
 var threePieceSpan = document.getElementById('pieceThree').getElementsByTagName('span');
-var spanNum = onePieceSpan.length+twoPieceSpan.length/2+threePieceSpan.length;
+var spanNum = onePieceSpan.length+twoPieceSpan.length/2+threePieceSpan.length-18;
 //搜索事件
 var search=document.getElementById('search');
 var input=search.getElementsByTagName('input');
@@ -114,17 +114,35 @@ for(var i=0;i<twoPieceSpan.length/2;i++){
 	twoPieceSpan[i].time=twoPieceSpan[i+twoPieceSpan.length/2].time = data[arr[i+onePieceSpan.length]].time;
 	twoPieceSpan[i].sex=twoPieceSpan[i+twoPieceSpan.length/2].sex = data[arr[i+onePieceSpan.length]].sex;
 }
-for(var i=0;i<threePieceSpan.length;i++){
-	if(data[arr[i+onePieceSpan.length+twoPieceSpan.length/2]].sex=="man"){
-		threePieceSpan[i].className=manName[manNum%manName.length];
-		manNum++;
+for(var i=0;i<threePieceSpan.length-18;i++){
+	if(i<7){
+		if(data[arr[i+onePieceSpan.length+twoPieceSpan.length/2]].sex=="man"){
+			threePieceSpan[i].className=manName[manNum%manName.length];
+			manNum++;
+		}else{
+			threePieceSpan[i].className=womanName[womanNum%womanName.length];
+			womanNum++;
+		}
+		threePieceSpan[i].name=data[arr[i+onePieceSpan.length+twoPieceSpan.length/2]].name;
+		threePieceSpan[i].time=data[arr[i+onePieceSpan.length+twoPieceSpan.length/2]].time;
+		threePieceSpan[i].sex=data[arr[i+onePieceSpan.length+twoPieceSpan.length/2]].sex;
 	}else{
-		threePieceSpan[i].className=womanName[womanNum%womanName.length];
-		womanNum++;
+		if(data[arr[i+onePieceSpan.length+twoPieceSpan.length/2]].sex=="man"){
+			threePieceSpan[i].className=threePieceSpan[i+6].className=manName[manNum%manName.length];
+			manNum++;
+		}else{
+			threePieceSpan[i].className=threePieceSpan[i+6].className=womanName[womanNum%womanName.length];
+			womanNum++;
+		}
+		threePieceSpan[i].name=threePieceSpan[i+6].name=data[arr[i+onePieceSpan.length+twoPieceSpan.length/2]].name;
+		threePieceSpan[i].time=threePieceSpan[i+6].time=data[arr[i+onePieceSpan.length+twoPieceSpan.length/2]].time;
+		threePieceSpan[i].sex=threePieceSpan[i+6].sex=data[arr[i+onePieceSpan.length+twoPieceSpan.length/2]].sex;
 	}
-	threePieceSpan[i].name=data[arr[i+onePieceSpan.length+twoPieceSpan.length/2]].name;
-	threePieceSpan[i].time=data[arr[i+onePieceSpan.length+twoPieceSpan.length/2]].time;
-	threePieceSpan[i].sex=data[arr[i+onePieceSpan.length+twoPieceSpan.length/2]].sex;
+}
+for(var i=threePieceSpan.length-12;i<threePieceSpan.length;i++){
+	threePieceSpan[i].name=threePieceSpan[i-12].name;
+	threePieceSpan[i].time=threePieceSpan[i-12].time;
+	threePieceSpan[i].sex=threePieceSpan[i-12].sex;
 }
 //鼠标移入移除显示不显示
 var boxTwo=document.getElementById('boxTwo');
