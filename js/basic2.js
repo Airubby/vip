@@ -18,12 +18,19 @@ var onePieceSpan=document.getElementById('pieceOne').getElementsByTagName('span'
 var twoPieceSpan = document.getElementById('pieceTwo').getElementsByTagName('span');
 var threePieceSpan = document.getElementById('pieceThree').getElementsByTagName('span');
 var spanNum = onePieceSpan.length+twoPieceSpan.length/2+threePieceSpan.length-18;
+//鼠标移入移除显示不显示
+var boxTwo=document.getElementById('boxTwo');
+var span=boxTwo.getElementsByTagName('span');
+var randomInfo=document.getElementById('randomInfo');
+var randomInfoChild=randomInfo.children;
 //搜索事件
 var search=document.getElementById('search');
 var input=search.getElementsByTagName('input');
 var searchBox=document.getElementById("searchBox");
 var umbrella=document.getElementById("umbrella");
 var searchNum=null;
+var spanArr=[];
+var iTimer=null;
 
 
 //提示和点击加入vip的效果
@@ -140,17 +147,11 @@ for(var i=0;i<threePieceSpan.length-18;i++){
 	}
 }
 for(var i=threePieceSpan.length-12;i<threePieceSpan.length;i++){
-	threePieceSpan[i].name=threePieceSpan[i-12].name;
-	threePieceSpan[i].time=threePieceSpan[i-12].time;
-	threePieceSpan[i].sex=threePieceSpan[i-12].sex;
+	threePieceSpan[i].className=threePieceSpan[i-12].className;
 }
+
 //鼠标移入移除显示不显示
-var boxTwo=document.getElementById('boxTwo');
-var span=boxTwo.getElementsByTagName('span');
-var randomInfo=document.getElementById('randomInfo');
-var randomInfoChild=randomInfo.children;
 for(var i=0;i<span.length;i++){
-	console.log(span[i]);
 	span[i].index=i;
 	span[i].addEventListener('mousemove',show,false);
 	span[i].addEventListener('mouseout',hidden,false);
@@ -195,6 +196,7 @@ input[0].onfocus=function(){
 					p.index=s;
 					p.onclick=function(){
 						input[0].value=data[this.index].name;
+						searchNum=this.index;
 						searchBox.style.display="none";
 					}
 					searchBox.info=false;
@@ -223,7 +225,99 @@ input[1].onclick=function(){
 	input[0].value='';
 }
 function findPeople(){
-	console.log(1)
+	umbrella.bOff=false;
+	spanArr.splice(0,spanArr.length);
+	for(var i=0;i<span.length;i++){
+		if(span[i].name==input[0].value){
+			umbrella.bOff=true;
+			spanArr.push(i);
+		}
+	}
+	if(umbrella.bOff){
+		var scrollTop=document.documentElement.scrollTop || document.body.scrollTop;
+		var scrollNum=scrollTop; 
+		clearInterval(iTimer);
+		if(spanArr[0]<onePieceSpan.length){
+			if(scrollTop<783){
+				iTimer=setInterval(function(){
+					scrollNum+=20;
+					if(scrollNum>=783){
+						scrollNum=783;
+						clearInterval(iTimer);
+					}
+					console.log(scrollNum)
+					document.documentElement.scrollTop = document.body.scrollTop=scrollNum;
+				},30);
+			}
+			if(scrollTop>783){
+				iTimer=setInterval(function(){
+					scrollNum-=20;
+					if(scrollNum<=783){
+						scrollNum=783;
+						clearInterval(iTimer);
+					}
+					document.documentElement.scrollTop = document.body.scrollTop=scrollNum;
+				},30);
+			}
+		}else if(spanArr[0]>=onePieceSpan.length&&spanArr[0]<onePieceSpan.length+twoPieceSpan.length){
+			if(scrollTop<1165){
+				iTimer=setInterval(function(){
+					scrollNum+=20;
+					if(scrollNum>=1165){
+						scrollNum=1165;
+						clearInterval(iTimer);
+					}
+					document.documentElement.scrollTop = document.body.scrollTop=scrollNum;
+				},30);
+			}
+			if(scrollTop>1165){
+				iTimer=setInterval(function(){
+					scrollNum-=20;
+					if(scrollNum<=1165){
+						scrollNum=1165;
+						clearInterval(iTimer);
+					}
+					document.documentElement.scrollTop = document.body.scrollTop=scrollNum;
+				},30);
+			}
+		}else if(spanArr[0]>=onePieceSpan.length+twoPieceSpan.length){
+			if(scrollTop<1736){
+				iTimer=setInterval(function(){
+					scrollNum+=20;
+					if(scrollNum>=1736){
+						scrollNum=1736;
+						clearInterval(iTimer);
+					}
+					document.documentElement.scrollTop = document.body.scrollTop=scrollNum;
+				},30);
+			}
+			if(scrollTop>1736){
+				iTimer=setInterval(function(){
+					scrollNum-=20;
+					if(scrollNum<=1736){
+						scrollNum=1736;
+						clearInterval(iTimer);
+					}
+					document.documentElement.scrollTop = document.body.scrollTop=scrollNum;
+				},30);
+			}
+		}
+		for(var i=0;i<spanArr.length;i++){
+			span[spanArr[i]].inum=spanArr[i];
+			(function(i){
+				move(span[span[spanArr[i]].inum],{translateY: -20},200,'easeOut',function(){
+					move(span[span[spanArr[i]].inum],{translateY: 0},500,'bounceOut');
+				});
+				span[spanArr[i]].time=setInterval(function(){
+					move(span[span[spanArr[i]].inum],{translateY: -20},200,'easeOut',function(){
+						move(span[span[spanArr[i]].inum],{translateY: 0},500,'bounceOut');
+					});
+				},1000);
+			})(i);
+		}
+	}else{
+		
+	}
 }
 
 
