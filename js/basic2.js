@@ -31,10 +31,16 @@ var search=document.getElementById('search');
 var input=search.getElementsByTagName('input');
 var searchBox=document.getElementById("searchBox");
 var umbrella=document.getElementById("umbrella");
+var umbrellaChild=umbrella.children;
 var searchNum=null;
 var spanArr=[];
 var iTimer=null;
 var bOff=true;
+var shakeValue=0;
+umbrella.bOff=false;
+umbrella.uOff=true;
+var peoples=document.getElementById('peoples');
+var people=peoples.getElementsByTagName('span');
 
 css(wheelSpan[0],'rotate',0);
 css(wheelSpan[1],'rotate',15);
@@ -195,13 +201,16 @@ function show(e){
 	randomInfo.style.top=top+"px";
 	randomInfoChild[0].innerHTML=this.name;
 	randomInfoChild[1].innerHTML=this.time;
-	for(var i=0;i<spanArr.length;i++){
-		if(this.inum==spanArr[i]){
-			for(var j=0;j<spanArr.length;j++){
-				clearInterval(span[spanArr[j]].nTimer);
+	if(spanArr.length!=0){
+		for(var i=0;i<spanArr.length;i++){
+			if(this.inum==spanArr[i]){
+				for(var j=0;j<spanArr.length;j++){
+					clearInterval(span[spanArr[j]].nTimer);
+				}
 			}
 		}
 	}
+	
 }
 function hidden(){
 	randomInfo.style.visibility="hidden";
@@ -361,10 +370,12 @@ function findPeople(){
 function doshake(){
 	if(bOff){
 		bOff=false;
-		var scrollTop=document.documentElement.scrollTop || document.body.scrollTop;
+		input[0].disabled = 'true';
+		css(search,'opacity',0.5);
+		var scrollNum=document.documentElement.scrollTop || document.body.scrollTop;
 		if(scrollNum<783){
 			dTimer=setInterval(function(){
-				scrollNum+=20;
+				scrollNum+=60;
 				if(scrollNum>=783){
 					scrollNum=783;
 					clearInterval(dTimer);
@@ -373,7 +384,7 @@ function doshake(){
 			},30);
 		}else{
 			dTimer=setInterval(function(){
-				scrollNum-=20;
+				scrollNum-=60;
 				if(scrollNum<=783){
 					scrollNum=783;
 					clearInterval(dTimer);
@@ -382,7 +393,97 @@ function doshake(){
 			},30);
 		}
 		umbrella.style.display="block";
+		setTimeout(function(){
+			move(umbrella,{opacity:1},1000);
+		},1000);
+		if(data[searchNum].sex=='man'){
+			umbrellaChild[1].className=manName[manNum%manName.length];
+			manNum++;
+		}else{
+			umbrellaChild[1].className=womanName[womanNum%womanName.length];
+			womanNum++;
+		}
+		umbrellaChild[1].name=data[searchNum].name;
+		umbrellaChild[1].sex=data[searchNum].sex;
+		umbrellaChild[1].time=data[searchNum].time;
+		umbrellaChild[1].onmousemove=function(){
+			show(e);
+		};
+		umbrella.uTimer=setInterval(shake,20);
+		setTimeout(function(){
+			move(umbrella,{top:335},4000,'linear',function(){
+				clearInterval(umbrella.uTimer);
+				css(umbrella,'rotate',0);
+				move(umbrellaChild[0],{opacity:0},200);
+				var addPeople=document.createElement('span');
+				addPeople.className=umbrellaChild[1].className;
+				addPeople.name=umbrellaChild[1].name;
+				addPeople.time=umbrellaChild[1].time;
+				addPeople.sex=umbrellaChild[1].sex;
+				css(addPeople,'left',687);
+				peoples.appendChild(addPeople);
+				setTimeout(function(){
+					css(umbrella,'top',0);
+					css(umbrella,'opacity',0);
+					css(umbrellaChild[0],'opacity',1);
+					umbrella.style.display ='none';
+					var left0 = people[0].offsetLeft;
+					var left1 = people[1].offsetLeft;
+					var left2 = people[2].offsetLeft;
+					move(people[0],{opacity:0},3000,'linear');
+					move(people[1],{left:Math.round(parseInt(left1)/2),opacity:0},2000,'linear',function(){
+						move(people[1],{opacity:1,left:parseInt(left0)},2000,'linear',function(){
+							peoples.removeChild(people[0]);
+							arr.splice(27,1);
+							arr.splice(29,0,searchNum);
+							for(var i=0; i<span.length; i++){
+								span[i].index = i;
+								span[i].addEventListener('mousemove',show,false);
+								span[i].addEventListener('mouseout',hidden,false);
+							}
+						});
+					});
+					move(people[2],{left:parseInt(left1)},2000,'linear');
+					move(people[3],{left:parseInt(left2)},2000,'linear');
+					addPeople.onmousemove = function(ev){
+						var e=e||window.event;
+						var s=document.documentElement.scrollTop||document.body.scrollTop;
+						var left=e.clientX;
+						var top=e.clientY+s-randomInfo.offsetHeight-20;
+						randomInfo.style.visibility="visible";
+						randomInfo.style.left=left+"px";
+						randomInfo.style.top=top+"px";
+						randomInfoChild[0].innerHTML=data[searchNum].name;
+						randomInfoChild[1].innerHTML=data[searchNum].time;
+						
+					}
+					addPeople.addEventListener('mouseleave',hidden,false);
+					bOff=true;
+					input[0].disabled = '';
+					css(search,'opacity',1);
+				},1000);
+				
+			})
+		},1500);
+		
 	}
+}
+
+function shake(){
+	if(umbrella.uOff){
+		shakeValue+=0.5;
+		if(shakeValue>=15){
+			shakeValue=15;
+			umbrella.uOff=false;
+		}
+	}else{
+		shakeValue-=0.5;
+		if(shakeValue<=-15){
+			shakeValue=-15;
+			umbrella.uOff=true;
+		}
+	}
+	css(umbrella,'rotate',shakeValue);
 }
 
 
