@@ -77,10 +77,10 @@ function css(obj, attr, value){
 		}
 	}else if(arguments.length==3){
 		switch(attr){
-			//case 'scale':
+			case 'scale':
 			case 'scaleX':
 			case 'scaleY':
-			//case 'rotate':
+			case 'rotate':
 			case 'rotateX':
 			case 'rotateY':
 			case 'translateZ':
@@ -135,12 +135,12 @@ function setCss3(obj, attr, value){
 	obj.$Transform[attr]=typeof(value)=='number'?value:parseInt(value);
 	for( sTr in obj.$Transform){
 		switch(sTr){
-			//case 'scale':
+			case 'scale':
 			case 'scaleX':
 			case 'scaleY':
 				sVal+=sTr+"("+obj.$Transform[sTr]+") ";
 				break;
-			//case 'rotate':
+			case 'rotate':
 			case 'rotateX':
 			case 'rotateY':
 			case 'skewY':

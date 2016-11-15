@@ -773,13 +773,14 @@ em{ font-style: normal; }
 	position: relative;
 	padding-top: 145px;
 }
-#umbrella { 
-	width: 145px; 
-	height: 190px; 
-	position: absolute; 
-	top: 0px; 
-	left: 630px; 
-	z-index: 2; 
+#umbrella {
+	width: 145px;
+	height: 190px;
+	position: absolute;
+	top: 0px;
+	left: 630px;
+	z-index: 2;
+	display: none;
 	-webkit-transform: rotate(15deg);
 	transform: rotate(15deg);
 }
@@ -831,7 +832,7 @@ em{ font-style: normal; }
 	width: 396px;
 	height: 380px;
 	position: relative;
-	overflow: hidden;
+	top: -19px;
 }
 #wheel{
 	width: 396px;
@@ -857,6 +858,7 @@ em{ font-style: normal; }
 	position: absolute;
 	width: 38px;
 	height: 42px;
+	z-index: 9;
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: bottom center;

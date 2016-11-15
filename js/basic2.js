@@ -1,3 +1,6 @@
+//摩天轮css样式
+var wheel=document.getElementById('wheel');
+var wheelSpan=wheel.getElementsByTagName('span');
 //提示和点击加入vip的效果
 var black=document.getElementById("black");
 var popTwo=document.getElementById('popTwo');
@@ -31,6 +34,32 @@ var umbrella=document.getElementById("umbrella");
 var searchNum=null;
 var spanArr=[];
 var iTimer=null;
+var bOff=true;
+
+css(wheelSpan[0],'rotate',0);
+css(wheelSpan[1],'rotate',15);
+css(wheelSpan[2],'rotate',30);
+css(wheelSpan[3],'rotate',45);
+css(wheelSpan[4],'rotate',59);
+css(wheelSpan[5],'rotate',76);
+css(wheelSpan[6],'rotate',90);
+css(wheelSpan[7],'rotate',104);
+css(wheelSpan[8],'rotate',121);
+css(wheelSpan[9],'rotate',135);
+css(wheelSpan[10],'rotate',150);
+css(wheelSpan[11],'rotate',165);
+css(wheelSpan[12],'rotate',180);
+css(wheelSpan[13],'rotate',194);
+css(wheelSpan[14],'rotate',212);
+css(wheelSpan[15],'rotate',227);
+css(wheelSpan[16],'rotate',239);
+css(wheelSpan[17],'rotate',256);
+css(wheelSpan[18],'rotate',270);
+css(wheelSpan[19],'rotate',285);
+css(wheelSpan[20],'rotate',298);
+css(wheelSpan[21],'rotate',314);
+css(wheelSpan[22],'rotate',330);
+css(wheelSpan[23],'rotate',344);
 
 
 //提示和点击加入vip的效果
@@ -166,6 +195,13 @@ function show(e){
 	randomInfo.style.top=top+"px";
 	randomInfoChild[0].innerHTML=this.name;
 	randomInfoChild[1].innerHTML=this.time;
+	for(var i=0;i<spanArr.length;i++){
+		if(this.inum==spanArr[i]){
+			for(var j=0;j<spanArr.length;j++){
+				clearInterval(span[spanArr[j]].nTimer);
+			}
+		}
+	}
 }
 function hidden(){
 	randomInfo.style.visibility="hidden";
@@ -233,23 +269,25 @@ function findPeople(){
 			spanArr.push(i);
 		}
 	}
+	for(var i=0;i<spanArr.length;i++){
+		clearInterval(span[spanArr[i]].nTimer);
+		move(span[spanArr[i]],{translateY: 0},500,'bounceOut');
+	}
 	if(umbrella.bOff){
-		var scrollTop=document.documentElement.scrollTop || document.body.scrollTop;
-		var scrollNum=scrollTop; 
+		var scrollNum=document.documentElement.scrollTop || document.body.scrollTop;
 		clearInterval(iTimer);
 		if(spanArr[0]<onePieceSpan.length){
-			if(scrollTop<783){
+			if(scrollNum<783){
 				iTimer=setInterval(function(){
 					scrollNum+=20;
 					if(scrollNum>=783){
 						scrollNum=783;
 						clearInterval(iTimer);
 					}
-					console.log(scrollNum)
 					document.documentElement.scrollTop = document.body.scrollTop=scrollNum;
 				},30);
 			}
-			if(scrollTop>783){
+			if(scrollNum>783){
 				iTimer=setInterval(function(){
 					scrollNum-=20;
 					if(scrollNum<=783){
@@ -260,7 +298,7 @@ function findPeople(){
 				},30);
 			}
 		}else if(spanArr[0]>=onePieceSpan.length&&spanArr[0]<onePieceSpan.length+twoPieceSpan.length){
-			if(scrollTop<1165){
+			if(scrollNum<1165){
 				iTimer=setInterval(function(){
 					scrollNum+=20;
 					if(scrollNum>=1165){
@@ -270,7 +308,7 @@ function findPeople(){
 					document.documentElement.scrollTop = document.body.scrollTop=scrollNum;
 				},30);
 			}
-			if(scrollTop>1165){
+			if(scrollNum>1165){
 				iTimer=setInterval(function(){
 					scrollNum-=20;
 					if(scrollNum<=1165){
@@ -281,7 +319,7 @@ function findPeople(){
 				},30);
 			}
 		}else if(spanArr[0]>=onePieceSpan.length+twoPieceSpan.length){
-			if(scrollTop<1736){
+			if(scrollNum<1736){
 				iTimer=setInterval(function(){
 					scrollNum+=20;
 					if(scrollNum>=1736){
@@ -291,7 +329,7 @@ function findPeople(){
 					document.documentElement.scrollTop = document.body.scrollTop=scrollNum;
 				},30);
 			}
-			if(scrollTop>1736){
+			if(scrollNum>1736){
 				iTimer=setInterval(function(){
 					scrollNum-=20;
 					if(scrollNum<=1736){
@@ -305,18 +343,45 @@ function findPeople(){
 		for(var i=0;i<spanArr.length;i++){
 			span[spanArr[i]].inum=spanArr[i];
 			(function(i){
-				move(span[span[spanArr[i]].inum],{translateY: -20},200,'easeOut',function(){
+				move(span[span[spanArr[i]].inum],{translateY: -20},200,'linear',function(){
 					move(span[span[spanArr[i]].inum],{translateY: 0},500,'bounceOut');
 				});
-				span[spanArr[i]].time=setInterval(function(){
-					move(span[span[spanArr[i]].inum],{translateY: -20},200,'easeOut',function(){
+				span[spanArr[i]].nTimer=setInterval(function(){
+					move(span[span[spanArr[i]].inum],{translateY: -20},200,'linear',function(){
 						move(span[span[spanArr[i]].inum],{translateY: 0},500,'bounceOut');
 					});
 				},1000);
 			})(i);
 		}
 	}else{
-		
+		doshake();
+	}
+}
+
+function doshake(){
+	if(bOff){
+		bOff=false;
+		var scrollTop=document.documentElement.scrollTop || document.body.scrollTop;
+		if(scrollNum<783){
+			dTimer=setInterval(function(){
+				scrollNum+=20;
+				if(scrollNum>=783){
+					scrollNum=783;
+					clearInterval(dTimer);
+				}
+				document.documentElement.scrollTop = document.body.scrollTop=scrollNum;
+			},30);
+		}else{
+			dTimer=setInterval(function(){
+				scrollNum-=20;
+				if(scrollNum<=783){
+					scrollNum=783;
+					clearInterval(dTimer);
+				}
+				document.documentElement.scrollTop = document.body.scrollTop=scrollNum;
+			},30);
+		}
+		umbrella.style.display="block";
 	}
 }
 
