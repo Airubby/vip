@@ -41,6 +41,7 @@ umbrella.bOff=false;
 umbrella.uOff=true;
 var peoples=document.getElementById('peoples');
 var people=peoples.getElementsByTagName('span');
+var activeNum=0;
 
 css(wheelSpan[0],'rotate',0);
 css(wheelSpan[1],'rotate',15);
@@ -248,6 +249,63 @@ input[0].onfocus=function(){
 				}
 				
 			}
+			
+			if(e.keyCode!=38&&e.keyCode!=40&&e.keyCode!=13){
+				activeNum=0;
+			}
+			if(!searchBox.info){
+				var searchP=searchBox.getElementsByTagName('p');
+				for(var i=0;i<searchP.length;i++){
+					searchP[i].index=i;
+					searchP[i].onmouseover=function(){
+						activeNum=this.index;
+					}
+					searchP[i].onclick=function(){
+						input[0].value=searchP[this.index].innerHTML;
+						searchBox.style.display="none";
+						for(var s in data){
+							var regExp=new RegExp(searchP[this.index].innerHTML);
+							if(regExp.test(data[s].name)){
+								searchNum=s;
+							}
+						}
+					}
+				}
+				switch(e.keyCode){
+					case 38:
+						activeNum--;
+						if(activeNum<0){
+							activeNum=searchP.length-1;
+						}
+						break;
+					case 40:
+						activeNum++;
+						if(activeNum>=searchP.length){
+							activeNum=0;
+						}
+						break;
+					case 13:
+						if(searchP.length!=0){
+							input[0].value=searchP[activeNum].innerHTML;
+							for(var s in data){
+								if(data[s].name === input[0].value){
+									searchNum = s;
+									findPeople();
+								}
+							}
+							input[0].value = '';
+							searchBox.innerHTML = '';
+							searchBox.style.display = 'none';
+						}
+						break;
+				}
+				if(searchP.length!=0){
+					searchP[activeNum].style.background="#09c";
+				}
+				
+			}
+			
+			
 			if(searchBox.info){
 				var div=document.createElement('div');
 				div.style.color="red";
@@ -256,6 +314,8 @@ input[0].onfocus=function(){
 			}
 			
 		}
+		
+		
 		
 	}
 }
@@ -270,6 +330,11 @@ input[1].onclick=function(){
 	input[0].value='';
 }
 function findPeople(){
+	for(var i=0;i<spanArr.length;i++){
+		clearInterval(span[spanArr[i]].nTimer);
+		//move(span[spanArr[i]],{translateY: 0},500,'bounceOut');
+		move(span[span[spanArr[i]].inum],{translateY: 0},500,'bounceOut');
+	}
 	umbrella.bOff=false;
 	spanArr.splice(0,spanArr.length);
 	for(var i=0;i<span.length;i++){
@@ -277,10 +342,6 @@ function findPeople(){
 			umbrella.bOff=true;
 			spanArr.push(i);
 		}
-	}
-	for(var i=0;i<spanArr.length;i++){
-		clearInterval(span[spanArr[i]].nTimer);
-		move(span[spanArr[i]],{translateY: 0},500,'bounceOut');
 	}
 	if(umbrella.bOff){
 		var scrollNum=document.documentElement.scrollTop || document.body.scrollTop;
@@ -406,9 +467,7 @@ function doshake(){
 		umbrellaChild[1].name=data[searchNum].name;
 		umbrellaChild[1].sex=data[searchNum].sex;
 		umbrellaChild[1].time=data[searchNum].time;
-		umbrellaChild[1].onmousemove=function(){
-			show(e);
-		};
+		umbrellaChild[1].addEventListener('mousemove',show,false);
 		umbrella.uTimer=setInterval(shake,20);
 		setTimeout(function(){
 			move(umbrella,{top:335},4000,'linear',function(){
@@ -461,6 +520,7 @@ function doshake(){
 					bOff=true;
 					input[0].disabled = '';
 					css(search,'opacity',1);
+					input[0].focus();
 				},1000);
 				
 			})
