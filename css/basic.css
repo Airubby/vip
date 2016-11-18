@@ -1515,7 +1515,7 @@ em{ font-style: normal; }
 	left: 50%;
 	margin-left: -500px;
 }
-.baozhi{
+#baozhi{
 	width: 75px;
 	height: 43px;
 	position: absolute;
@@ -1523,6 +1523,22 @@ em{ font-style: normal; }
 	bottom: 56px;
 	left: 172px;
 	background: url(../images/baozhi.png) no-repeat;
+}
+.baozhi{
+	-webkit-animation: baozhi 2s ease forwards;
+	animation: baozhi 2s ease forwards;
+	-webkit-transform-origin: 0% 0%;
+	transform-origin: 0% 0%;
+}
+@keyframes baozhi{
+	0%,40%,100% { transform: rotate(0deg); -webkit-transform: rotate(0deg); }
+	60% { transform: rotate(4deg); -webkit-transform: rotate(3deg); }
+	80% { transform: rotate(-2deg); -webkit-transform: rotate(-2deg); }
+}
+@-webkit-keyframes baozhi{
+	0%,40%,100% { transform: rotate(0deg); -webkit-transform: rotate(0deg); }
+	60% { transform: rotate(4deg); -webkit-transform: rotate(3deg); }
+	80% { transform: rotate(-2deg); -webkit-transform: rotate(-2deg); }
 }
 .wenzi {
     bottom: 105px;
@@ -1541,13 +1557,47 @@ em{ font-style: normal; }
     float: left;
     visibility: collapse;
 }
+.wenzi span:nth-of-type(2) {
+    background-position: -14px 0;
+}
+.wenzi span:nth-of-type(3) {
+    background-position: -28px 0;
+}
+.wenzi span:nth-of-type(4) {
+    background-position: -41px 0;
+}
+.wenzi span:nth-of-type(5) {
+    background-position: -55px 0;
+}
+.wenzi span:nth-of-type(6) {
+    background-position: -68px 0;
+}
+.wenzi span:nth-of-type(7) {
+    background-position: 0 -18px;
+}
+.wenzi span:nth-of-type(8) {
+    background-position: -14px -18px;
+}
+.wenzi span:nth-of-type(9) {
+    background-position: -27px -18px;
+}
+.wenzi span:nth-of-type(10) {
+    background-position: -42px -18px;
+}
+.wenzi span:nth-of-type(11) {
+    background-position: -55px -18px;
+}
+.wenzi span:nth-of-type(12) {
+    background-position: -70px -18px;
+}
+
 .shakeLine {
 	width: 1px;
 	height: 12px;
 	position: absolute;
 	background-color: rgba(255,255,255,.5);
 	bottom: 123px;
-	left: 229px;
+	left: 230px;
 	-webkit-animation: shakeLine 0.25s infinite alternate;
 	animation: shakeLine 0.25s infinite alternate;
 }
