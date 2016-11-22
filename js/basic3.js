@@ -279,6 +279,79 @@ function swap(){
 }
 
 
+for(var i=1;i<planetDiv.length;i++){
+	planetDiv[i].addEventListener('mousedown',press,false);
+}
+
+function press(ev){
+	
+	if(!swapOff){
+		return;
+	}
+	swapOff=false;
+	clearInterval(iTimer);
+	boxThree.removeEventListener('mousemove',find,false);
+	boxThree.removeEventListener('mousemove',attract,false);
+	
+	var e=ev||window.event;
+	var _this=this;
+	var clientX=e.clientX;
+	var clientY=e.clientY;
+	var left = this.offsetLeft;
+	var top = this.offsetTop;
+	
+	if(e.preventDefault){
+		e.preventDefault();
+	}else{
+		window.event.returnValue = false;
+	}
+	
+	boxThree.addEventListener('mousemove',drag,false);
+	document.addEventListener('mouseup',clear,false);
+	
+	function drag(ev){
+		
+		var e = ev || window.event;
+		_this.lineShake();
+		for(var i=1; i<planetDiv.length; i++){
+			if(i==_this.index){
+				planetDiv[i].style.left = left + (e.clientX-clientX)/2 + "px";
+				planetDiv[i].style.top = top + (e.clientY-clientY)/2 + "px";
+			}else{
+				planetDiv[i].style.left = nPlanetX[i-1] + (_this.offsetLeft - nPlanetX[_this.index-1])*Math.abs(_this.offsetLeft-planetDiv[i].offsetLeft)/3000 + "px";
+				planetDiv[i].style.top = nPlanetY[i-1] + (_this.offsetTop - nPlanetY[_this.index-1])*Math.abs(_this.offsetTop-planetDiv[i].offsetTop)/3000 + "px";
+			}
+			planetDiv[i].lineShake();
+		}
+		
+	}
+	
+	function clear(){
+		boxThree.removeEventListener('mousemove',drag,false);
+		document.removeEventListener('mouseup',clear,false);
+		_this.removeEventListener('mousedown',press,false);
+		planetDiv[_this.index].shake(function(){
+			swapOff = true;
+			_this.addEventListener('mousedown',press,false);
+			boxThree.addEventListener('mousemove',find,false);
+		});
+		for (var i=1; i<planetDiv.length; i++) {
+				
+			if(i!=_this.index){
+				
+				planetDiv[i].shake();
+				
+			}
+			
+			
+		}
+		iTimer = setInterval(swap,time);
+	}
+	
+	return false;
+	
+}
+
 
 
 
