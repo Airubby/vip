@@ -28,7 +28,7 @@ var attractX=null;
 var attractY=null;
 var iTimer=null;
 var swapOff=true;
-var time=5000;
+var time=3000;
 
 
 //文字输入
@@ -64,6 +64,7 @@ function textShow(){
 tTimer=setInterval(textShow,300);
 
 //球球
+iTimer = setInterval(swap,time);  //开始就监听自动运动
 for(var i=0;i<lineEm.length;i++){
 	lineX.push(lineEm[i].offsetLeft);
 	lineY.push(lineEm[i].offsetTop);
@@ -129,7 +130,7 @@ function attract(ev){
 				boxThree.addEventListener('mousemove',find,false);
 				
 			});
-			
+			iTimer = setInterval(swap,time);
 		},15);
 		
 	}
@@ -235,12 +236,11 @@ for(var i=1; i<planetDiv.length; i++){
 	}
 	
 }
-/*
-iTimer = setInterval(swap,time);
+
 function swap(){
 	
 	swapOff = false;
-	document.removeEventListener('mousemove',find,false);
+	boxThree.removeEventListener('mousemove',find,false);
 	for (var i=1; i<planetDiv.length; i++) {
 		
 		var disX = Math.round(Math.random()*60-30);
@@ -264,7 +264,7 @@ function swap(){
 				nPlanetY.push(planetDiv[i].offsetTop);
 			}
 			swapOff = true;
-			document.addEventListener('mousemove',find,false);
+			boxThree.addEventListener('mousemove',find,false);
 			
 		}, function(){
 			
@@ -278,7 +278,7 @@ function swap(){
 	
 }
 
-*/
+
 
 
 
