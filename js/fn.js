@@ -9,7 +9,7 @@ function clearClass(obj){
 }
 
 //运动效果
-function move(obj,json,duration,fx,callback){
+function move(obj,json,duration,fx,callback,fn){
 	var timer=null;
 	var d=duration||1000;  //duration持续时间
 	var j={};
@@ -39,6 +39,7 @@ function move(obj,json,duration,fx,callback){
 			var value = Tween[fx](t, j[attr].b, j[attr].c, d);
 			css(obj,attr,value);
 		}
+		fn&&fn();
 		if(t==d){
 			clearInterval(timer);
 			callback && callback.call(obj);
@@ -59,7 +60,7 @@ function css(obj, attr, value){
 				obj.$Transform={};
 			}
 			switch(attr){
-				//case 'scale':
+				case 'scale':
 				case 'scaleX':
 				case 'scaleY':
 					return typeof(obj.$Transform[attr])=='number'?obj.$Transform[attr]:1;

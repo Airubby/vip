@@ -1,3 +1,5 @@
+(function(){
+	
 var explorer = window.navigator.userAgent.toUpperCase();
 if(explorer.indexOf("MSIE")!=-1){
 	alert("为了页面效果能更好的展示，请使用高版本的浏览器浏览次页面！")
@@ -75,6 +77,8 @@ boxOne.addEventListener('mousemove',function(e){
 	divStar[7].style.top=starArrY[7]-dy/120+"px";
 });
 
+
+})();
 
 	
 	

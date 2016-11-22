@@ -1,3 +1,5 @@
+(function(){
+	
 //摩天轮css样式
 var wheel=document.getElementById('wheel');
 var wheelSpan=wheel.getElementsByTagName('span');
@@ -560,6 +562,8 @@ sessionStorage.setItem('username','daocao');
 
 
 
+
+})();
 
 
 

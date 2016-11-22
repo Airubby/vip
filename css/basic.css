@@ -13,7 +13,7 @@ em{ font-style: normal; }
 	height: 68px;
 	border-bottom: 2px solid #FD5A71;
 	background: rgba(0,0,0,.4);
-	z-index: 10;
+	z-index: 9999;
 	position: fixed;
 }
 #header .logo{
@@ -1357,11 +1357,12 @@ em{ font-style: normal; }
 }
 .boxThree_con{
 	position: relative;
-	height: 530px;
+	height: 585px;
 	bottom: 0;
 }
 .boxThree_con>div{
 	position: absolute;
+	z-index: 999;
 }
 .boxThree_con>div:nth-of-type(2){
 	top: 200px;
@@ -1384,9 +1385,9 @@ em{ font-style: normal; }
 	left: 50%;
 	margin-left: -34px;
 	margin-top: 10px;
-	opacity: 0;
-	-webkit-transition: all 0.5s ease-in-out; 
-	transition: all 0.5s ease-in-out; 
+	opacity: 1;
+	-webkit-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
 }
 .boxThree_con>div:hover p{
 	opacity: 1;
