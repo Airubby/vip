@@ -620,7 +620,7 @@ em{ font-style: normal; }
 	width: 100%;
 	min-height: 1300px;
 	border-top: 1px solid #193241;
-	overflow: hidden;
+	/* overflow: hidden; */
 	background: #053362;
 	padding-bottom: 60px;
 }
