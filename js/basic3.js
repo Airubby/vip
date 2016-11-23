@@ -11,7 +11,7 @@ var baozhi=document.getElementById("baozhi");
 var boxOne1=document.getElementsByClassName('boxOne')[0];
 var boxTwo1=document.getElementsByClassName('boxTwo')[0];
 var boxThree=document.getElementsByClassName('boxThree')[0];
-var planetTop=boxOne1.offsetHeight+boxTwo1.offsetHeight;
+var planetTop=0;
 var sTimer=null;
 var planet=document.getElementById("planet");
 var planetDiv=planet.getElementsByTagName('div');
@@ -82,6 +82,7 @@ function find(event){
 	
 	var e=event||window.event;
 	var sTop=document.documentElement.scrollTop||document.body.scrollTop;
+	planetTop=parseInt(boxOne1.offsetHeight)+parseInt(boxTwo1.offsetHeight);
 	var mouseX=e.clientX-planet.offsetLeft;
 	var mouseY=e.clientY+sTop-planetTop;
 	for(var i=1;i<planetDiv.length;i++){
